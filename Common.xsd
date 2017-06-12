@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://luxoft.com/mvideo/services/common" elementFormDefault="qualified">
+
+    <xs:simpleType name="Quality">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="FSS" />
+        <xs:enumeration value="FTY" />
+        <xs:enumeration value="INS" />
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StockCategory">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="O" />
+        <xs:enumeration value="C" />
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="NeedKind">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="ORDER" />
+        <xs:enumeration value="MMOBILE" />
+        <xs:enumeration value="S2S" />
+        <xs:enumeration value="PICKUP" />
+        <xs:enumeration value="PICKUP_T" />
+        <xs:enumeration value="RIM" />
+        <xs:enumeration value="B2B" />
+        <xs:enumeration value="LOGISTIC" />
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SystemId">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="NTS" />
+        <xs:enumeration value="CRM" />
+        <xs:enumeration value="RTD" />
+        <xs:enumeration value="Mmobile" />
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ErrorLevel">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="ERROR" />
+        <xs:enumeration value="WARNING" />
+        <xs:enumeration value="LOGIC" />
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Flag">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="Y" />
+        <xs:enumeration value="N" />
+        <xs:enumeration value="" />
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CustomerAttributeKey">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="name" />
+        <xs:enumeration value="lastName" />
+        <xs:enumeration value="patronymic" />
+        <xs:enumeration value="passport" />
+        <xs:enumeration value="phoneNumber" />
+        <xs:enumeration value="eMail" />
+        <xs:enumeration value="authRepName" />
+        <xs:enumeration value="authNo" />
+        <xs:enumeration value="buyerName" />
+        <xs:enumeration value="settlementAccount" />
+        <xs:enumeration value="correcpondentAccount" />
+        <xs:enumeration value="buyerOkpo" />
+        <xs:enumeration value="consigneeOkpo" />
+        <xs:enumeration value="kpp" />
+        <xs:enumeration value="inn" />
+        <xs:enumeration value="bic" />
+        <xs:enumeration value="okved" />
+        <xs:enumeration value="consigneeName" />
+        <xs:enumeration value="consigneeAdress" />
+        <xs:enumeration value="paymentOrder" />
+        <xs:enumeration value="consigneePowerOfAttorneyDocument" />
+        <xs:enumeration value="consigneePowerOfAttorneyIssuedBy" />
+        <xs:enumeration value="loyCardNumber" />
+        <xs:enumeration value="customerGroup" />
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PositionAttributeKey">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="isInCredit" />
+        <xs:enumeration value="isShowcaseSample" />
+        <xs:enumeration value="competitor" />
+        <xs:enumeration value="competitorPrice" />
+        <xs:enumeration value="attachment" />
+        <xs:enumeration value="reservationCode" />
+        <xs:enumeration value="serialNumber" />
+        <xs:enumeration value="serviceDate" />
+        <xs:enumeration value="servicePeriod" />
+        <xs:enumeration value="servicePeriodId" />
+        <xs:enumeration value="name" />
+        <xs:enumeration value="lastName" />
+        <xs:enumeration value="patronymic" />
+        <xs:enumeration value="region" />
+        <xs:enumeration value="regionId" />
+        <xs:enumeration value="city" />
+        <xs:enumeration value="cityId" />
+        <xs:enumeration value="street" />
+        <xs:enumeration value="house" />
+        <xs:enumeration value="deliveryZone" />
+        <xs:enumeration value="entrance" />
+        <xs:enumeration value="floor" />
+        <xs:enumeration value="apartment" />
+        <xs:enumeration value="hasLift" />
+        <xs:enumeration value="metroStation" />
+        <xs:enumeration value="intercom" />
+        <xs:enumeration value="freetext" />
+        <xs:enumeration value="postcode" />
+        <xs:enumeration value="mainPhoneNumber" />
+        <xs:enumeration value="secondPhoneNumber" />
+        <xs:enumeration value="eMail" />
+        <xs:enumeration value="reservationId" />
+        <xs:enumeration value="quotaId" />
+        <xs:enumeration value="isUrgent" />
+        <xs:enumeration value="handoverLocation" />
+        <xs:enumeration value="serviceCenterId" />
+        <xs:enumeration value="serviceCenterName" />
+        <xs:enumeration value="serviceCenterPhone" />
+        <xs:enumeration value="serviceCenterContract" />
+        <xs:enumeration value="serviceDescription" />
+        <xs:enumeration value="serviceCouponValidity" />
+        <xs:enumeration value="serviceWarranty" />
+        <xs:enumeration value="providerId" />
+        <xs:enumeration value="needKind" />
+        <xs:enumeration value="stockCategory" />
+        <xs:enumeration value="quality" />
+      </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <xs:simpleType name="Activation">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="manual" />
+        <xs:enumeration value="entityId" />
+      </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

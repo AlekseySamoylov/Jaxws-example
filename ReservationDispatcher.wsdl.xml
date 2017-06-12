@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://luxoft.com/mvideo/services/ReservationDispatcher" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://luxoft.com/mvideo/services/ReservationDispatcher" targetNamespace="http://luxoft.com/mvideo/services/ReservationDispatcher">
+  <wsdl:types>
+    <xs:schema xmlns:cmn="http://luxoft.com/mvideo/services/common" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://luxoft.com/mvideo/services/ReservationDispatcher">
+    <xs:import namespace="http://luxoft.com/mvideo/services/common" schemaLocation="Common.xsd"/>
+
+    <xs:element name="createReservationOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="reservationOrder">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="1" minOccurs="1" name="reserveLocation" type="xs:string"/>
+                            <xs:element maxOccurs="1" minOccurs="1" name="requesterLocation" type="xs:string"/>
+                            <xs:element maxOccurs="1" minOccurs="1" name="systemId" type="cmn:SystemId"/>
+                            <xs:element maxOccurs="1" minOccurs="1" name="positionList">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="1" name="position" type="tns:CreateReservationRequestPosition"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="cancelReservationOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="reservationOrder">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="1" minOccurs="1" name="reserveLocation" type="xs:string"/>
+                            <xs:element maxOccurs="1" minOccurs="1" name="positionList">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="1" name="position" type="tns:CancelReservationRequestPosition"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="reservationOrderResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="responseHeader" type="tns:ReservationResponseHeader"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="responseBody" type="tns:ReservationResponseBody"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="CancelReservationRequestPosition">
+        <xs:sequence>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="positionId" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="reservationCode" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="docId" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="docDtlId" type="xs:string"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CreateReservationRequestPosition">
+        <xs:sequence>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="positionId" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="needKind" type="cmn:NeedKind"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="docId" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="docDtlId" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="articleNumber" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="quantity" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="stockId" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="stockCategory" type="cmn:StockCategory"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="quality" type="cmn:Quality"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="reservationCode" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="reservationTimeout" type="xs:dateTime"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="ReservationResponseHeader">
+        <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="responseDate" type="xs:dateTime"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="responseCode" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="responseMessage" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="responseDescription" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="errorList">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="1" name="error" type="tns:Error"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Error">
+        <xs:sequence>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="errorLevel" type="cmn:ErrorLevel"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="errorCode" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="errorMessage" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="errorLink" type="xs:int"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ReservationResponseBody">
+        <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="positionList">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="1" name="position" type="tns:ReservationResponsePosition"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="1" name="materialStockList">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="1" name="materialStock" type="tns:MaterialStock"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ReservationResponsePosition">
+        <xs:sequence>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="positionId" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="reservationCode" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="quantity" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="reservationTimeout" type="xs:dateTime"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MaterialStock">
+        <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="articleNumber" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="stockList">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="1" name="stock" type="tns:Stock"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Stock">
+        <xs:sequence>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="stockId" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="stockQuantity" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="reservedQuantity" type="xs:int"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+
+
+
+
+
+
+
+
+  <wsdl:message name="createReservationOrderRequest">
+    <wsdl:part element="tns:createReservationOrderRequest" name="createReservationOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelReservationOrderRequest">
+    <wsdl:part element="tns:cancelReservationOrderRequest" name="cancelReservationOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reservationOrderResponse">
+    <wsdl:part element="tns:reservationOrderResponse" name="reservationOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ReservationResourcePort">
+    <wsdl:operation name="createReservationOrder">
+      <wsdl:input message="tns:createReservationOrderRequest" name="createReservationOrderRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="cancelReservationOrder">
+      <wsdl:input message="tns:cancelReservationOrderRequest" name="cancelReservationOrderRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <!--<wsdl:operation name="reservationOrder">-->
+      <!--<wsdl:output message="tns:reservationOrderResponse" name="reservationOrderResponse">-->
+    <!--</wsdl:output>-->
+        <!--&lt;!&ndash;Я добавил&ndash;&gt;-->
+        <!--<wsdl:input message="tns:reservationOrderResponse"/>-->
+    <!--</wsdl:operation>-->
+  </wsdl:portType>
+  <wsdl:binding name="ReservationResourcePortSoap11" type="tns:ReservationResourcePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createReservationOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createReservationOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="cancelReservationOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="cancelReservationOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <!--<wsdl:operation name="reservationOrder">-->
+      <!--<soap:operation soapAction=""/>-->
+      <!--<wsdl:output name="reservationOrderResponse">-->
+        <!--<soap:body use="literal"/>-->
+      <!--</wsdl:output>-->
+    <!--</wsdl:operation>-->
+  </wsdl:binding>
+  <wsdl:service name="ReservationResourcePortService">
+    <wsdl:port binding="tns:ReservationResourcePortSoap11" name="ReservationResourcePortSoap11">
+      <soap:address location="http://localhost:8080/com.luxoft.mvideo.reservation.dispatcher/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

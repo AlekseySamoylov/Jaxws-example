@@ -1,8 +1,15 @@
-<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://helloservice.jaxws.alekseysamoylov.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="FibonacciServiceService" targetNamespace="http://helloservice.jaxws.alekseysamoylov.com/">
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tns="http://helloservice.jaxws.alekseysamoylov.com/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+                  name="FibonacciServiceService" targetNamespace="http://helloservice.jaxws.alekseysamoylov.com/">
     <wsdl:types>
-        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helloservice.jaxws.alekseysamoylov.com/" elementFormDefault="unqualified" targetNamespace="http://helloservice.jaxws.alekseysamoylov.com/" version="1.0">
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:tns="http://helloservice.jaxws.alekseysamoylov.com/" elementFormDefault="unqualified"
+                   targetNamespace="http://helloservice.jaxws.alekseysamoylov.com/" version="1.0">
             <xs:element name="calculate" type="tns:calculate"/>
             <xs:element name="calculateResponse" type="tns:calculateResponse"/>
+            <xs:element name="wrongMethod" type="tns:wrongMethod"/>
+            <xs:element name="wrongMethodResponse" type="tns:wrongMethodResponse"/>
             <xs:complexType name="calculate">
                 <xs:sequence>
                     <xs:element name="arg0" type="xs:int"/>
@@ -13,20 +20,43 @@
                     <xs:element name="return" type="xs:int"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:complexType name="wrongMethod">
+                <xs:sequence>
+                    <xs:element name="arg0" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wrongMethodResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
         </xs:schema>
     </wsdl:types>
+
     <wsdl:message name="calculateResponse">
         <wsdl:part element="tns:calculateResponse" name="parameters"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="calculate">
         <wsdl:part element="tns:calculate" name="parameters"></wsdl:part>
     </wsdl:message>
+    <wsdl:message name="wrongMethodResponse">
+        <wsdl:part element="tns:wrongMethodResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="wrongMethod">
+        <wsdl:part element="tns:wrongMethod" name="parameters"></wsdl:part>
+    </wsdl:message>
+
     <wsdl:portType name="FibonacciService">
         <wsdl:operation name="calculate">
             <wsdl:input message="tns:calculate" name="calculate"></wsdl:input>
             <wsdl:output message="tns:calculateResponse" name="calculateResponse"></wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="wrongMethod">
+            <wsdl:input message="tns:wrongMethod" name="wrongMethod"></wsdl:input>
+            <wsdl:output message="tns:wrongMethodResponse" name="wrongMethodResponse"></wsdl:output>
+        </wsdl:operation>
     </wsdl:portType>
+
     <wsdl:binding name="FibonacciServiceServiceSoapBinding" type="tns:FibonacciService">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="calculate">
@@ -38,7 +68,17 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="wrongMethod">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="wrongMethod">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="wrongMethodResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
     </wsdl:binding>
+
     <wsdl:service name="FibonacciServiceService">
         <wsdl:port binding="tns:FibonacciServiceServiceSoapBinding" name="FibonacciServicePort">
             <soap:address location="http://localhost:8080/jaxws-example-1.0-SNAPSHOT/fibonacci-service"/>

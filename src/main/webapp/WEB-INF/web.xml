@@ -7,20 +7,20 @@
     <welcome-file-list>
         <welcome-file>view/index.jsp</welcome-file>
     </welcome-file-list>
-    <servlet>
-        <servlet-name>HelloService</servlet-name>
-        <servlet-class>com.alekseysamoylov.jaxws.helloservice.Hello</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HelloService</servlet-name>
-        <url-pattern>/hello-service</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>FibonacciService</servlet-name>
-        <servlet-class>com.alekseysamoylov.jaxws.helloservice.FibonacciService</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FibonacciService</servlet-name>
-        <url-pattern>/fibonacci-service</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>HelloService</servlet-name>-->
+        <!--<servlet-class>com.alekseysamoylov.jaxws.helloservice.Hello</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>HelloService</servlet-name>-->
+        <!--<url-pattern>/hello-service</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet>-->
+        <!--<servlet-name>FibonacciService</servlet-name>-->
+        <!--<servlet-class>com.alekseysamoylov.jaxws.helloservice.FibonacciService</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>FibonacciService</servlet-name>-->
+        <!--<url-pattern>/fibonacci-service</url-pattern>-->
+    <!--</servlet-mapping>-->
 </web-app>

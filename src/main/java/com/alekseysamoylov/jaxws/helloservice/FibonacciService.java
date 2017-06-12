@@ -21,4 +21,11 @@ public class FibonacciService {
         }
         return fib;
     }
+    @WebMethod
+    public int wrongMethod(int value) {
+
+        value += Math.random() * 10;
+
+        return value;
+    }
 }
