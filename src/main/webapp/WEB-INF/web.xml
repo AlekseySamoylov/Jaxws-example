@@ -2,12 +2,25 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <display-name>SOAP-web-service</display-name>
+
+    <welcome-file-list>
+        <welcome-file>view/index.jsp</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>HelloService</servlet-name>
         <servlet-class>com.alekseysamoylov.jaxws.helloservice.Hello</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloService</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/hello-service</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FibonacciService</servlet-name>
+        <servlet-class>com.alekseysamoylov.jaxws.helloservice.FibonacciService</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FibonacciService</servlet-name>
+        <url-pattern>/fibonacci-service</url-pattern>
     </servlet-mapping>
 </web-app>
